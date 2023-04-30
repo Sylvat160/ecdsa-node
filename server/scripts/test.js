@@ -27,10 +27,15 @@ function getAccountAddress(publicKey) {
     return keccak256(publicKey.slice(1)).slice(-20)
 }
 
+function verification(signature, message, publicKey) {
+    return secp.secp256k1.verify(signature, hashMessage(message), publicKey)
+}
+
 msg = hashMessage("Hello World")
-sign =  signMessage("Hello", privateKey, { recovered : true })
+sign =  signMessage("Hello", privateKey)
 publicKey = getPublicKey(privateKey)
 rec = recoverKey("Hello", sign)
+ver = verification(sign, "Hello", publicKey)
 
 console.log("____________________ h a s h i n g ....................");
 
@@ -47,3 +52,6 @@ console.log(publicKey)
 console.log("____________________ a d d r e s s ....................");
 console.log(getAccountAddress(publicKey))
 console.log(toHex(getAccountAddress(publicKey)));
+
+console.log("____________________ v e r i f i c a t i o n ....................");
+console.log(ver)
