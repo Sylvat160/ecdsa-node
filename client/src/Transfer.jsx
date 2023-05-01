@@ -1,4 +1,5 @@
 import { useState } from "react";
+const secp = require('ethereum-cryptography/secp256k1')
 import server from "./server";
 
 function Transfer({ address, setBalance }) {

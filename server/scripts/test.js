@@ -4,6 +4,7 @@ const secp = require('ethereum-cryptography/secp256k1')
 
 const privateKey = secp.secp256k1.utils.randomPrivateKey()
 
+
 function hashMessage(message) {
     return keccak256(utf8ToBytes(message))
 }
@@ -45,6 +46,7 @@ console.log(sign)
 
 console.log("____________________ r e c o v e r i n g ....................");
 console.log(rec)
+console.log(rec === publicKey);
 
 console.log("____________________ p u b l i c K e y ....................");
 console.log(publicKey)
