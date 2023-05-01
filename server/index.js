@@ -29,7 +29,7 @@ function transfer(sender, recipient, amount, signature) {
   const recipientBalance = balances[recipient]
 
   // verify the signature
-  const publicKey = verifySignature(signature, hashMessage(`${sender}${recipient}${amount}`), sender)
+  const publicKey = verifySignature(signature, hashMessage(`${amount}${recipient}`), sender)
   if (!publicKey) {
     throw new Error('Invalid signature!')
   }
@@ -75,5 +75,5 @@ function setInitialBalance(address) {
   if (!balances[address]) {
     balances[address] = 0
   }
-  
+
 }
