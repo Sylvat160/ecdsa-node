@@ -75,4 +75,5 @@ function setInitialBalance(address) {
   if (!balances[address]) {
     balances[address] = 0
   }
+  
 }
